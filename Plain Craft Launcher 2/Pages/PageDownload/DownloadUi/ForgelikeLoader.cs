@@ -123,7 +123,11 @@ public static partial class DownloadUi
                 info = new GameDownload.DlCleanroomListEntry(loaderVersion);
                 break;
 
+            // 已提供详情条目（info != null）或 Forge 无需补全条目时直接放行；
+            // 注意：上面的 when 守卫失败会落到这里，不能漏掉 NeoForge/Cleanroom
             case GameDownload.DlForgelikeEntry.ForgelikeType.Forge:
+            case GameDownload.DlForgelikeEntry.ForgelikeType.NeoForge:
+            case GameDownload.DlForgelikeEntry.ForgelikeType.Cleanroom:
                 break;
 
             default:
